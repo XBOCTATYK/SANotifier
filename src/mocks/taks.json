@@ -1,0 +1,32 @@
+{
+    "id": 2,
+    "name": "Почистить зубы",
+    "user_id": 1,
+    "description": "Сайт упал, надо починить",
+    "active": true,
+    "next_time": 1588777001610,
+    "priority": 8,
+    "options": {
+        "dont_get_forget": false,
+        "not_timing": false,
+        "range": null,
+        "repeating": [
+            {
+                "type": "dates",
+                "exclude": true,
+                "param": ["05.05.2020", "10.05.2020"]
+            },
+            {
+                "type": "daily",
+                "param": 1
+            },
+            {
+                "type": "time",
+                "param": ["09:00", "22:00"]
+            }
+        ]
+    },
+    "repeat": true,
+    "time": 1588877001610,
+    "forget_factor": 1.22
+}
