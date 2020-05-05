@@ -1,34 +1,40 @@
 <template>
-    <v-simple-table>
-        <template v-slot:default>
-            <thead>
-            <tr>
-                <th class="text-left">{{ 'TASK' | getMessage }}</th>
-                <th class="text-center">{{ 'TASK_PRIORITY' | getMessage }}</th>
-                <th class="text-left">{{ 'TASK_STATUS' | getMessage }}</th>
-                <th  class="text-center">{{ 'TIME_TO_DONE' | getMessage }}</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="item in $attrs.list" :key="item.name">
-                <td>{{ item.name }}</td>
-                <td class="text-center">{{ item.priority }}</td>
-                <td>{{  }}</td>
-                <td class="text-center">{{ item.time | formatDateWithTime }}</td>
-            </tr>
-            </tbody>
-        </template>
-    </v-simple-table>
+    <v-container fluid>
+        <v-expansion-panels>
+            <v-expansion-panel v-for="item in $attrs.list" :key="item.name">
+                <v-expansion-panel-header>{{ item.name }}</v-expansion-panel-header>
+                <v-expansion-panel-content>
+                    <task-description-item :subscription="'DATE' | getMessage">
+                        {{ item.time | formatDate }}
+                    </task-description-item>
+                    <task-description-item :subscription="'TIME' | getMessage">
+                        {{ item.time | formatTime }}
+                    </task-description-item>
+                    <task-description-item>
+                        {{ item.description }}
+                    </task-description-item>
+                    <br/>
+                    <v-row justify="center">
+                        <v-btn large @click="$router.push(`/task/${item.id}`)" text>
+                            {{ 'EDIT' | getMessage }}
+                        </v-btn>
+                    </v-row>
+                </v-expansion-panel-content>
+            </v-expansion-panel>
+        </v-expansion-panels>
+    </v-container>
 </template>
 
 <script>
+    import TaskDescriptionItem from './TaskDescriptionItem';
     export default {
         name: "ListTable",
+        components: { TaskDescriptionItem },
         data() {
             return {
                 headers: [
                     {}
-                ],
+                ]
             }
         }
     }

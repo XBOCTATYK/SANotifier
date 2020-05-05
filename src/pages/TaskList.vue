@@ -1,5 +1,13 @@
 <template>
-    <ListTable :list="taskList"></ListTable>
+    <v-container>
+        <h1>{{ 'TASK_LIST' | getMessage }}</h1>
+        <br/>
+        <ListTable :list="taskList"></ListTable>
+        <br/>
+        <v-row justify="center">
+            <v-btn @click="$router.push(`/task/new`)" outlined >{{ 'TASK_ADD' | getMessage }}</v-btn>
+        </v-row>
+    </v-container>
 </template>
 
 <script>
