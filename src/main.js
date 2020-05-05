@@ -5,7 +5,6 @@ import Vuex from 'vuex';
 
 import routes from './pages/routes';
 import vuetify from './plugins/vuetify';
-import { Localisation } from './utils/Loc/Localisation';
 import { APP_CONFIG, APP_DEFAULT_IMPLEMENTATIONS } from './constants/config';
 import { DataRequests } from './utils/DataRequests/DataRequests';
 import { getTaskList } from './utils/getDataFunctions/getTaskList';
@@ -13,11 +12,8 @@ import { getTask } from './utils/getDataFunctions/getTask';
 import { getUserOptions } from './utils/getDataFunctions/getUserOptions';
 import getVuexStore from './store';
 import { EXTERNAL_DATA_TYPES } from './constants/externalDataFunctions';
-
-export const Loc = new Localisation(
-    APP_DEFAULT_IMPLEMENTATIONS[APP_CONFIG.MODE].messageStore,
-    { locale: APP_CONFIG.DEFAULT_LOCALE }
-);
+import LocalizationPlugin from './plugins/localization';
+import DateFormatFiltersPlugin from './plugins/dateFormatFilters';
 
 export const ExternalDataStore = new DataRequests(APP_CONFIG.MODE, [
   { name: EXTERNAL_DATA_TYPES.getTaskList, func: getTaskList },
@@ -32,7 +28,11 @@ export const store = getVuexStore(ExternalDataStore);
 Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
-
+Vue.use(LocalizationPlugin, {
+  store:  APP_DEFAULT_IMPLEMENTATIONS[APP_CONFIG.MODE].messageStore,
+  options: { locale: APP_CONFIG.DEFAULT_LOCALE }
+});
+Vue.use(DateFormatFiltersPlugin);
 
 const router = new VueRouter({
   routes

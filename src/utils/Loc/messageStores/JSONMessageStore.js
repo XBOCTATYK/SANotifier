@@ -11,6 +11,12 @@ export class JSONMessageStore {
     }
 
     getMessage(message) {
-        return this.messages[this.locale][message];
+        let localizedMessage = this.messages[this.locale][message];
+
+        if (!localizedMessage) {
+            localizedMessage = message;
+        }
+
+        return localizedMessage;
     }
 }

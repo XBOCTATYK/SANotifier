@@ -11,7 +11,7 @@
         name: "TaskList",
         components: { ListTable },
         computed: ({
-            ...mapState([ 'taskList', 'userId' ])
+            ...mapState([ 'taskList' ])
         }),
         methods: ({
             ...mapActions([

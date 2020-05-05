@@ -3,14 +3,18 @@
         <template v-slot:default>
             <thead>
             <tr>
-                <th class="text-left">Name</th>
-                <th class="text-left">Calories</th>
+                <th class="text-left">{{ 'TASK' | getMessage }}</th>
+                <th class="text-center">{{ 'TASK_PRIORITY' | getMessage }}</th>
+                <th class="text-left">{{ 'TASK_STATUS' | getMessage }}</th>
+                <th  class="text-center">{{ 'TIME_TO_DONE' | getMessage }}</th>
             </tr>
             </thead>
             <tbody>
             <tr v-for="item in $attrs.list" :key="item.name">
                 <td>{{ item.name }}</td>
-                <td>{{ item.time }}</td>
+                <td class="text-center">{{ item.priority }}</td>
+                <td>{{  }}</td>
+                <td class="text-center">{{ item.time | formatDateWithTime }}</td>
             </tr>
             </tbody>
         </template>
@@ -24,7 +28,7 @@
             return {
                 headers: [
                     {}
-                ]
+                ],
             }
         }
     }
