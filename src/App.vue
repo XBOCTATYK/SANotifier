@@ -1,29 +1,23 @@
 <template>
-  <v-app>
-    <v-content>
-      <router-view></router-view>
-    </v-content>
-  </v-app>
+    <v-app>
+        <v-content>
+            <router-view></router-view>
+        </v-content>
+    </v-app>
 </template>
 
 <script>
-import { Localisation } from './utils/Loc/Localisation';
-import { JSONMessenger } from './utils/Loc/implementations/JSONMessenger';
+    export default {
+        name: 'App',
 
-export const Loc = new Localisation(JSONMessenger, { locale: 'ru' });
+        components: {},
 
-export default {
-  name: 'App',
+        data: () => ({
+            //
+        }),
 
-  components: {
-  },
-
-  data: () => ({
-    //
-  }),
-
-  created () {
-    this.$vuetify.theme.dark = true
-  },
-};
+        created() {
+            this.$vuetify.theme.dark = true
+        }
+    };
 </script>

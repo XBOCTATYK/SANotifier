@@ -3,8 +3,8 @@ import task from '../../mocks/task.json';
 import userOptions from '../../mocks/user-options.json';
 import { TASK_LIST_URL, TASK_URL, USER_OPTIONS_URL } from '../../constants/url';
 
-export async function getJSON(options) {
-    switch (options.url) {
+export async function getJSON({ url }) {
+    switch (url) {
         case TASK_LIST_URL:
             return taskList;
         case TASK_URL:

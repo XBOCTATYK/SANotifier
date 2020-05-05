@@ -1,6 +1,6 @@
 import ruMessages from '../../../mocks/messages.json';
 
-export class JSONMessenger {
+export class JSONMessageStore {
     constructor(defaultLocale) {
         this.messages = { ...ruMessages };
         this.locale =  defaultLocale || 'ru';
