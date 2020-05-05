@@ -7,6 +7,11 @@
 </template>
 
 <script>
+import { Localisation } from './utils/Loc/Localisation';
+import { JSONMessenger } from './utils/Loc/implementations/JSONMessenger';
+
+export const Loc = new Localisation(JSONMessenger, { locale: 'ru' });
+
 export default {
   name: 'App',
 
@@ -16,5 +21,9 @@ export default {
   data: () => ({
     //
   }),
+
+  created () {
+    this.$vuetify.theme.dark = true
+  },
 };
 </script>
