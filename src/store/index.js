@@ -1,6 +1,6 @@
 import Vuex from 'vuex';
 import { getActions } from './actions';
-import { setTaskList, TYPES } from './mutations';
+import { setFormValue, setTaskList, TYPES } from './mutations';
 
 export default function (ExternalDataStore) {
     const actionsWithDataStore = getActions(ExternalDataStore);
@@ -10,11 +10,20 @@ export default function (ExternalDataStore) {
             userId: 1,
             userOptions: {
                 language: null,
-            }
+            },
+            form: {
+                priority: '',
+                name: '',
+                description: '',
+                date: '',
+                time: '',
+                type: ''
+            },
+            taskList: [],
         },
-        taskList: [],
         mutations: {
-            [TYPES.SET_TASK_LIST]: setTaskList
+            [TYPES.SET_TASK_LIST]: setTaskList,
+            [TYPES.SET_FORM_VALUE]: setFormValue
         },
         actions: { ...actionsWithDataStore }
     })

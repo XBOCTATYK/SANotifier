@@ -1,10 +1,14 @@
 <template>
-    <div></div>
+    <task-form>
+
+    </task-form>
 </template>
 
 <script>
+    import TaskForm from '../components/forms/task-form/task-form';
     export default {
-        name: "TaskCreate"
+        name: "TaskCreate",
+        components: { TaskForm }
     }
 </script>
 

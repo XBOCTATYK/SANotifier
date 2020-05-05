@@ -26,9 +26,9 @@
 </template>
 
 <script>
-    import TaskDescriptionItem from './TaskDescriptionItem';
+    import TaskDescriptionItem from './task-description-item';
     export default {
-        name: "ListTable",
+        name: "list-table",
         components: { TaskDescriptionItem },
         data() {
             return {

@@ -39,7 +39,7 @@ export default [
         ]
     },
     {
-        path: '/task/new', component: TaskCreate
+        path: '/task/create/new', component: TaskCreate
     },
     {
         path: '/task/created', component: TaskCreated

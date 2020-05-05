@@ -2,10 +2,10 @@
     <v-container>
         <h1>{{ 'TASK_LIST' | getMessage }}</h1>
         <br/>
-        <ListTable :list="taskList"></ListTable>
+        <list-table :list="taskList"></list-table>
         <br/>
         <v-row justify="center">
-            <v-btn @click="$router.push(`/task/new`)" outlined >{{ 'TASK_ADD' | getMessage }}</v-btn>
+            <v-btn @click="$router.push(`/task/create/new`)" outlined>{{ 'TASK_ADD' | getMessage }}</v-btn>
         </v-row>
     </v-container>
 </template>
@@ -13,7 +13,7 @@
 <script>
     import { mapActions, mapState } from 'vuex'
     import { EXTERNAL_DATA_TYPES } from '../constants/externalDataFunctions';
-    import ListTable from '../components/ListTable';
+    import ListTable from '../components/list-table';
 
     export default {
         name: "TaskList",
