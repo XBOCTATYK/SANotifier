@@ -40,6 +40,8 @@
         "FREQ_N_MONTH": "месяца",
         "FREQ_N_YEAR": "года",
         "EXCLUDE_WEEKEND": "Не напоминать в выходные",
-        "SAVE": "Сохранить"
+        "SAVE": "Сохранить",
+        "SELECT_DATE": "Выбрать дату",
+        "SELECT_TIME": "Выбрать время"
     }
 }

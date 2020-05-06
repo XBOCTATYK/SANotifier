@@ -8,22 +8,39 @@
                     :value="form.name"
 
             ></v-text-field>
-            <v-date-picker
-                name="date"
-                @change="(value) => setValue({ target: { name: 'date', value }})"
-                :value="form.date"
-            ></v-date-picker>
-            <v-time-picker
-                name="time"
-                @change="(value) => setValue({ target: { name: 'time', value }})"
-                :value="form.time"
-            ></v-time-picker>
+            <modal-selector
+                    :label="'FIELD_DATE' | getMessage"
+                    :value="form.date"
+                    :change="(value) => setValue({ target: { name: 'date', value }})"
+            >
+                <v-date-picker
+                        name="date"
+                        @change="(value) => setValue({ target: { name: 'date', value }})"
+                        :value="form.date"
+                >
+                    <v-text-field name="date" @change.native="setValue" :value="form.date"></v-text-field>
+                </v-date-picker>
+            </modal-selector>
+            <modal-selector
+                    :label="'FIELD_TIME' | getMessage"
+                    :value="form.time"
+                    :change="(value) => setValue({ target: { name: 'time', value }})"
+            >
+                <v-time-picker
+                    name="time"
+                    @change="(value) => setValue({ target: { name: 'time', value }})"
+                    :value="form.time"
+                >
+                    <v-text-field name="time" @change.native="setValue" :value="form.time"></v-text-field>
+                </v-time-picker>
+            </modal-selector>
             <v-select
                     name="priority"
                     @change="(value) => setValue({ target: { name: 'priority', value }})"
                     :label="'FIELD_PRIORITY' | getMessage"
                     :items="selectFieldOptions.priority"
                     :value="form.priority"
+                    single-line
             ></v-select>
             <v-textarea
                     name="description"
@@ -51,9 +68,11 @@
 
     import { priorityOptions, taskTypeOptions } from '../../../constants/select-options';
     import { TYPES } from '../../../store/mutations';
+    import ModalSelector from '../../fields/modal-selector';
 
     export default {
         name: "task-form",
+        components: { ModalSelector },
         data: function () {
             return {
                 selectFieldOptions: {
