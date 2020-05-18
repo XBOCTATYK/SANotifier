@@ -1,5 +1,6 @@
 import { JSONMessageStore } from '../utils/Loc/messageStores/JSONMessageStore';
 import { getJSON } from '../utils/dataSources/JSON';
+import { getByFireBase } from '../utils/dataSources/fireBase';
 
 export const APP_MODES = {
     MOCK: 'mock',
@@ -19,7 +20,12 @@ export const APP_DEFAULT_IMPLEMENTATIONS = {
         requests: getJSON,
     },
     [APP_MODES.DEV]: {
-        messageStore: JSONMessageStore
+        messageStore: JSONMessageStore,
+        requests: getByFireBase({
+            apiKey: 'AIzaSyAo3XGoMMuvUK204XP33zSXS0NlVXQxjzw',
+            projectId: 'sa-notifier',
+            authDomain: 'europe-west2'
+        }),
     },
     [APP_MODES.PROD]: {
         messageStore: JSONMessageStore
