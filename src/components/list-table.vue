@@ -18,8 +18,9 @@
                         <v-btn large @click="() => $attrs.selectItem(item.id)" text>
                             {{ 'EDIT' | getMessage }}
                         </v-btn>
-                        <v-btn small @click="() => $attrs.deleteItem(item.id)">
-                            <v-icon>remove</v-icon>
+                        &nbsp;
+                        <v-btn large @click="() => $attrs.deleteItem(item.id)">
+                            <v-icon>mdi-delete</v-icon>
                         </v-btn>
                     </v-row>
                 </v-expansion-panel-content>
