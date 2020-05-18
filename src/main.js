@@ -7,18 +7,19 @@ import routes from './pages/routes';
 import vuetify from './plugins/vuetify';
 import { APP_CONFIG, APP_DEFAULT_IMPLEMENTATIONS } from './constants/config';
 import { DataRequests } from './utils/DataRequests/DataRequests';
-import { getTaskList } from './utils/getDataFunctions/getTaskList';
-import { getTask } from './utils/getDataFunctions/getTask';
-import { getUserOptions } from './utils/getDataFunctions/getUserOptions';
 import getVuexStore from './store';
 import { EXTERNAL_DATA_TYPES } from './constants/externalDataFunctions';
 import LocalizationPlugin from './plugins/localization';
 import DateFormatFiltersPlugin from './plugins/dateFormatFilters';
+import { getAbstractFunction } from './utils/getDataFunctions/getAbstractFunction';
 
 export const ExternalDataStore = new DataRequests(APP_CONFIG.MODE, [
-  { name: EXTERNAL_DATA_TYPES.getTaskList, func: getTaskList },
-  { name: EXTERNAL_DATA_TYPES.getTask, func: getTask },
-  { name: EXTERNAL_DATA_TYPES.getUserOptions, func: getUserOptions }
+  { name: EXTERNAL_DATA_TYPES.getTaskList, func: getAbstractFunction(EXTERNAL_DATA_TYPES.getTaskList) },
+  { name: EXTERNAL_DATA_TYPES.getTask, func: getAbstractFunction(EXTERNAL_DATA_TYPES.getTask) },
+  { name: EXTERNAL_DATA_TYPES.getUserOptions, func: getAbstractFunction(EXTERNAL_DATA_TYPES.getUserOptions) },
+  { name: EXTERNAL_DATA_TYPES.updateTask, func: getAbstractFunction(EXTERNAL_DATA_TYPES.updateTask) },
+  { name: EXTERNAL_DATA_TYPES.createTask, func: getAbstractFunction(EXTERNAL_DATA_TYPES.createTask) },
+  { name: EXTERNAL_DATA_TYPES.deleteTask, func: getAbstractFunction(EXTERNAL_DATA_TYPES.deleteTask) },
 ]);
 
 Vue.use(Vuex);

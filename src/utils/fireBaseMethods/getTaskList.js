@@ -1,9 +1,11 @@
 export function getTaskListFB(db) {
-    db.collection('tasks').get()
-        .then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    console.log(`${ doc.id } => ${ doc.data() }`);
-                });
-            }
-        )
+    return db.collection('tasks').get().then((querySnapshot) => {
+        const result = [];
+
+        querySnapshot.forEach((doc) => {
+            result.push({ id: doc.id, ...doc.data()});
+        });
+
+        return Promise.resolve(result);
+    });
 }

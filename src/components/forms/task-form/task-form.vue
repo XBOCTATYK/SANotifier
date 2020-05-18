@@ -1,6 +1,6 @@
 <template>
     <v-container fluid>
-        <v-form>
+        <v-form @submit="$attrs.submit">
             <v-text-field
                     name="name"
                     @change.native="setValue"
@@ -56,7 +56,7 @@
                     :value="form.type"
             ></v-select>
             <v-row justify="center">
-                <v-btn large @click="saveForm" text>
+                <v-btn large @click="$attrs.submit" text>
                     {{ 'SAVE' | getMessage }}
                 </v-btn>
             </v-row>

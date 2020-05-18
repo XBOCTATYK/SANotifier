@@ -9,7 +9,7 @@ export const APP_MODES = {
 };
 
 export const APP_CONFIG = {
-    MODE: APP_MODES.MOCK,
+    MODE: APP_MODES.DEV,
     DEFAULT_LOCALE: 'ru',
     FULL_DEFAULT_LOCALE: 'ru-RU'
 };

@@ -1,13 +1,15 @@
 import Vuex from 'vuex';
 import { getActions } from './actions';
-import { setFormValue, setSomeFormValues, setTaskList, TYPES } from './mutations';
+import { getTaskMutations} from './mutations';
 
 export default function (ExternalDataStore) {
+    const taskMutations = getTaskMutations();
     const actionsWithDataStore = getActions(ExternalDataStore);
 
     return new Vuex.Store({
         state: {
             userId: 1,
+            selectedTask: null,
             userOptions: {
                 language: null,
             },
@@ -21,11 +23,7 @@ export default function (ExternalDataStore) {
             },
             taskList: [],
         },
-        mutations: {
-            [TYPES.SET_TASK_LIST]: setTaskList,
-            [TYPES.SET_FORM_VALUE]: setFormValue,
-            [TYPES.SET_SOME_FORM_VALUES]: setSomeFormValues,
-        },
+        mutations: { ...taskMutations },
         actions: { ...actionsWithDataStore }
     })
 }

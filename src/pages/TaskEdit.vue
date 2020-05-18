@@ -1,5 +1,5 @@
 <template>
-    <task-form></task-form>
+    <task-form :submit="this.update"></task-form>
 </template>
 
 <script>
@@ -11,12 +11,16 @@
         name: "TaskEdit",
         components: { TaskForm },
         created() {
-            this[EXTERNAL_DATA_TYPES.getTask]();
+            this[EXTERNAL_DATA_TYPES.getTask](this.$route.params.id);
         },
         methods: ({
             ...mapActions([
-                EXTERNAL_DATA_TYPES.getTask
-            ])
+                EXTERNAL_DATA_TYPES.getTask,
+                EXTERNAL_DATA_TYPES.updateTask
+            ]),
+            update() {
+                this[EXTERNAL_DATA_TYPES.updateTask](this.$route.params.id)
+            }
         }),
     }
 </script>
