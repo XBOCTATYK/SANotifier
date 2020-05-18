@@ -10,7 +10,7 @@
             ></v-text-field>
             <modal-selector
                     :label="'FIELD_DATE' | getMessage"
-                    :value="form.date"
+                    :value="form.date | formatDate"
                     :change="(value) => setValue({ target: { name: 'date', value }})"
             >
                 <v-date-picker
@@ -45,6 +45,7 @@
             <v-textarea
                     name="description"
                     @change.native="setValue"
+                    auto-grow
                     :label="'FIELD_DESCRIPTION' | getMessage"
             ></v-textarea>
             <v-select

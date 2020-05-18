@@ -5,7 +5,7 @@
     "description": "Сайт упал, надо починить",
     "active": true,
     "next_time": 1588777001610,
-    "priority": 8,
+    "priority": "Высокий",
     "options": {
         "dont_get_forget": false,
         "not_timing": false,
@@ -27,6 +27,7 @@
         ]
     },
     "repeat": true,
-    "time": 1588877001610,
+    "date": 1588877001610,
+    "time": "12:30",
     "forget_factor": 1.22
 }

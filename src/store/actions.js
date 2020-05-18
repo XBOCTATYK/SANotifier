@@ -8,6 +8,12 @@ export function getActions(DataStore) {
             const taskList = await DataStore.getTaskList({ url: 'taskList' });
 
             commit(TYPES.SET_TASK_LIST, taskList)
+        },
+
+        [EXTERNAL_DATA_TYPES.getTask]: async function ({ commit }) {
+            const task = await DataStore.getTask({ url: 'task' });
+
+            commit(TYPES.SET_SOME_FORM_VALUES, task);
         }
     }
 }

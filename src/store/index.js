@@ -1,6 +1,6 @@
 import Vuex from 'vuex';
 import { getActions } from './actions';
-import { setFormValue, setTaskList, TYPES } from './mutations';
+import { setFormValue, setSomeFormValues, setTaskList, TYPES } from './mutations';
 
 export default function (ExternalDataStore) {
     const actionsWithDataStore = getActions(ExternalDataStore);
@@ -23,7 +23,8 @@ export default function (ExternalDataStore) {
         },
         mutations: {
             [TYPES.SET_TASK_LIST]: setTaskList,
-            [TYPES.SET_FORM_VALUE]: setFormValue
+            [TYPES.SET_FORM_VALUE]: setFormValue,
+            [TYPES.SET_SOME_FORM_VALUES]: setSomeFormValues,
         },
         actions: { ...actionsWithDataStore }
     })
