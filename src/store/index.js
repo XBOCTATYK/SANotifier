@@ -9,7 +9,7 @@ export default function (ExternalDataStore) {
     return new Vuex.Store({
         state: {
             userId: 1,
-            selectedTask: null,
+            lastSelectedTask: null,
             userOptions: {
                 language: null,
             },
@@ -21,7 +21,21 @@ export default function (ExternalDataStore) {
                 time: '',
                 type: ''
             },
-            taskList: [],
+            taskList: null,
+            UI: {
+                taskList: {
+                    loading: true,
+                },
+                task: {
+                    loading: true,
+                },
+                taskCreate: {
+                    loading: true,
+                },
+                taskDelete: {
+                    loading: true
+                }
+            },
         },
         mutations: { ...taskMutations },
         actions: { ...actionsWithDataStore }

@@ -3,6 +3,8 @@ export const TYPES = {
     SET_FORM_VALUE: 'setFormValue',
     SET_SOME_FORM_VALUES: 'setSomeFormValues',
     REMOVE_TASK_FROM_LIST: 'removeTaskFromList',
+    SET_LAST_SELECTED_TASK: 'setLastSelectedTask',
+    SET_ELEMENT_LOAD_STATE: 'setElementLoadState'
 };
 
 export function getTaskMutations() {
@@ -24,6 +26,12 @@ export function getTaskMutations() {
                     state.form[key] = values[key];
                 }
             }
+        },
+        setLastSelectedTask(state, taskId) {
+            state.lastSelectedTask = taskId;
+        },
+        setElementLoadState(state, { element, value }) {
+            state.UI[element].loading = value;
         }
     }
 }

@@ -19,7 +19,7 @@
                             {{ 'EDIT' | getMessage }}
                         </v-btn>
                         &nbsp;
-                        <v-btn large @click="() => $attrs.deleteItem(item.id)">
+                        <v-btn large @click="() => $attrs.deleteItem(item.id)" text>
                             <v-icon>mdi-delete</v-icon>
                         </v-btn>
                     </v-row>

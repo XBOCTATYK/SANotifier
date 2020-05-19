@@ -6,14 +6,18 @@ export function getActions(DataStore) {
 
     return {
         [EXTERNAL_DATA_TYPES.getTaskList]: async function({ commit }) {
+            commit(TYPES.SET_ELEMENT_LOAD_STATE, { element: 'taskList', value: true });
             const taskList = await DataStore.getTaskList({ url: TASK_LIST_URL });
 
-            commit(TYPES.SET_TASK_LIST, taskList)
+            commit(TYPES.SET_ELEMENT_LOAD_STATE, { element: 'taskList', value: false });
+            commit(TYPES.SET_TASK_LIST, taskList);
         },
 
         [EXTERNAL_DATA_TYPES.getTask]: async function ({ commit }, taskId) {
+            commit(TYPES.SET_ELEMENT_LOAD_STATE, { element: 'task', value: true });
             const task = await DataStore.getTask({ url: TASK_URL, payload: { taskId } });
 
+            commit(TYPES.SET_ELEMENT_LOAD_STATE, { element: 'task', value: false });
             commit(TYPES.SET_SOME_FORM_VALUES, task);
         },
 
