@@ -7,12 +7,8 @@ import { createTaskFB } from '../fireBaseMethods/createTaskFB';
 import { deleteTaskFB } from '../fireBaseMethods/deleteTaskFB';
 
 
-export function getByFireBase({ apiKey, projectId, authDomain }) {
-    firebase.initializeApp({
-        apiKey,
-        authDomain,
-        projectId
-    });
+export function getByFireBase() {
+    //firebase.initializeApp(options);
 
 
     const db = firebase.firestore();

@@ -45,3 +45,7 @@ new Vue({
   router,
   store,
 }).$mount('#app');
+
+APP_DEFAULT_IMPLEMENTATIONS[APP_CONFIG.MODE].messages();
+
+navigator.serviceWorker.register('firebase-messaging-sw.js').then(() => console.log('success')).catch(err => console.error(err));

@@ -2,6 +2,7 @@ import { JSONMessageStore } from '../utils/Loc/messageStores/JSONMessageStore';
 import { getJSON } from '../utils/dataSources/JSON';
 import { getByFireBase } from '../utils/dataSources/fireBase';
 import firebaseConfig from './local.json';
+import { setFirebaseMessaging } from '../message-module/setFirebaseMessaging';
 
 export const APP_MODES = {
     MOCK: 'mock',
@@ -23,6 +24,8 @@ export const APP_DEFAULT_IMPLEMENTATIONS = {
     [APP_MODES.DEV]: {
         messageStore: JSONMessageStore,
         requests: getByFireBase(firebaseConfig),
+        messages: setFirebaseMessaging(),
+        serviceWorker: firebaseConfig
     },
     [APP_MODES.PROD]: {
         messageStore: JSONMessageStore
