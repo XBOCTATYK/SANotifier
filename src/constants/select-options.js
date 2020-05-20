@@ -1,4 +1,5 @@
 export const priorityOptions = [
+    { value: 0, text: '' },
     { value: 9, text: 'PRIORITY_OPTION_HIGHEST' },
     { value: 8, text: 'PRIORITY_OPTION_VERY_HIGH' },
     { value: 7, text: 'PRIORITY_OPTION_HIGH' },
