@@ -1,11 +1,12 @@
 import { SimpleFormatter } from './formatters/SimpleFormatter';
 
+const defaultFormattedValue = new SimpleFormatter(null);
+
 export class SimpleModel {
     storedValue;
-    date;
     formattedValue;
-    constructor(value, FormatterClass = SimpleFormatter) {
-        this.formattedValue = new FormatterClass(value);
+    constructor(value, formattedValue = defaultFormattedValue) {
+        this.formattedValue = formattedValue.setValue(value);
         this.storedValue = this.formattedValue.value();
     }
 

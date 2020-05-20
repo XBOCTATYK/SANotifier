@@ -32,7 +32,7 @@ export class SimpleFormatter {
     }
 
     setValue(value) {
-        return new this(value, this.format, {
+        return new SimpleFormatter(value, this.format, {
             formatFunc: this.performFormat,
             parseFunc: this.parseFormat,
         })

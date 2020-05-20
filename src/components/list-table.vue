@@ -8,7 +8,7 @@
                         {{ item.date | formatDate }}
                     </task-description-item>
                     <task-description-item :subscription="'TIME' | getMessage">
-                        {{ item.time }}
+                        {{ item.date | formatTime }}
                     </task-description-item>
                     <task-description-item>
                         {{ item.description }}

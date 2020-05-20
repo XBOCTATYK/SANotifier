@@ -1,14 +1,16 @@
 import { DateFormatter } from './formatters/DateFormatter';
 import startOfDay from 'date-fns/startOfDay';
 
+const defaultFormattedDate = new DateFormatter(new Date(), 'yyyy-MM-dd');
+
 export class DateModel {
     storedValue;
     date;
     formattedDate;
-    constructor(date, FormatterClass = DateFormatter) {
+    constructor(date, formattedDate = defaultFormattedDate) {
         this.startOfDay = startOfDay;
 
-        this.formattedDate = new FormatterClass(date || new Date(), 'yyyy-MM-dd');
+        this.formattedDate = formattedDate.setValue(date);
         this.date = this.formattedDate.value();
         this.storedValue = this.startOfDay(this.date);
     }

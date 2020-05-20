@@ -11,11 +11,11 @@
             <modal-selector
                     :label="'FIELD_DATE' | getMessage"
                     :value="date.toString()"
-                    :change="(value) => setValue({ target: { name: 'date', value: dateTime.setDate(value).value() }})"
+                    :change="(value) => setValue({ target: { name: 'date', value: dateTime.setDate(value).valueOf() }})"
             >
                 <v-date-picker
                         name="date"
-                        @change="(value) => setValue({ target: { name: 'date', value: dateTime.setDate(value).value() }})"
+                        @change="(value) => setValue({ target: { name: 'date', value: dateTime.setDate(value).valueOf() }})"
                         :value="date.toString()"
                 >
                     <v-text-field name="date" @change.native="setValue" :value="date"></v-text-field>
@@ -24,11 +24,11 @@
             <modal-selector
                     :label="'FIELD_TIME' | getMessage"
                     :value="time"
-                    :change="(value) => setValue({ target: { name: 'date', value: dateTime.setTime(value).value() }})"
+                    :change="(value) => setValue({ target: { name: 'date', value: dateTime.setTime(value).valueOf() }})"
             >
                 <v-time-picker
                     name="date"
-                    @change="(value) => setValue({ target: { name: 'date', value: dateTime.setTime(value).value() }})"
+                    @change="(value) => setValue({ target: { name: 'date', value: dateTime.setTime(value).valueOf() }})"
                     :format="'24hr'"
                     :value="time"
                 >
@@ -46,6 +46,7 @@
             <v-textarea
                     name="description"
                     @change.native="setValue"
+                    :value="form.description"
                     auto-grow
                     :label="'FIELD_DESCRIPTION' | getMessage"
             ></v-textarea>
@@ -107,6 +108,8 @@
             ...mapMutations([TYPES.SET_FORM_VALUE]),
             setValue(event) {
                 const { name, value } = event.target;
+
+                console.log(value);
 
                 this[TYPES.SET_FORM_VALUE]({ name, value })
             },

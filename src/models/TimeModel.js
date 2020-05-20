@@ -2,15 +2,16 @@ import { DateFormatter } from './formatters/DateFormatter';
 import startOfDay from 'date-fns/startOfDay';
 
 const THREE_HOURS = 1000 * 60 * 60 * 3;
+const defaultFormattedDate = new DateFormatter(new Date(), 'kk:mm');
 
 export class TimeModel {
     storedValue;
     date;
     formattedDate;
-    constructor(date, FormatterClass = DateFormatter) {
+    constructor(date, formattedDate = defaultFormattedDate) {
         this.startOfDay = startOfDay;
 
-        this.formattedDate = new FormatterClass(date || new Date(), 'kk:mm');
+        this.formattedDate = formattedDate.setValue(date);
         this.date = this.formattedDate.value();
         this.storedValue = new Date(this.date.getTime() - this.startOfDay(this.date).getTime());
     }
